@@ -5,8 +5,6 @@ mongoose
     "mongodb+srv://" +
       process.env.DB_USER_PASS +
       "@cluster0.cxdso.mongodb.net/mern",
-
-
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
