@@ -46,7 +46,13 @@ nav {
         width: 26px;
       }
     }
-    
+    .img-navbar {
+      img{
+        border-radius: 50px;
+        height: 30px;
+        width: 30px;
+      }
+    }
     ul {
       display: flex;
       align-items: center;
@@ -56,12 +62,12 @@ nav {
       font-size: 1.2rem;
       
       .welcome {
-        transform: translateY(2px);
+        display: flex;
+        transform: translateY(4px);
 
         @media screen and(max-width: 590px) {
           display: none;
         }
-        
         h5 {
           font-family: $font-3;
         }
