@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateBio } from "../../actions/user.actions";
 import LeftNav from "../LeftNav";
 import { dateParser } from "../Utils";
+import FollowHandler from "./FollowHandler";
 import UploadImg from "./UploadImg";
 
 const Updateprofil = () => {
@@ -13,6 +14,8 @@ const Updateprofil = () => {
   const [followingPopup, SetFollowingPopup] = useState(false);
   const [followersPopup, SetFollowersPopup] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
+  const error = useSelector((state) => state.errorReducer.userError);
+
 
   const handleUpdate = () => {
     dispatch(updateBio(userData._id, bio));
@@ -30,6 +33,8 @@ const Updateprofil = () => {
           <h3>Photo de profil</h3>
           <img src={userData.picture} alt="user-pic" />
           <UploadImg />
+          <p>{error.maxSize}</p>
+          <p>{error.format}</p>
         </div>
         <div className="right-part">
           <div className="bio-update">
@@ -77,11 +82,14 @@ const Updateprofil = () => {
                       <li key={user._id}>
                         <img src={user.picture} alt={user.pseudo} />
                         <h4>{user.pseudo}</h4>
-                        <h3>FOLLOW HANDLER</h3>
+                        <div className="follow-handler">
+                        <FollowHandler idToFollow={user._id} type={"suggestion"}/>
+                        </div>
                       </li>
                     );
                   }
                 }
+                return null
               })}
             </ul>
           </div>
@@ -102,11 +110,14 @@ const Updateprofil = () => {
                       <li key={user._id}>
                         <img src={user.picture} alt={user.pseudo} />
                         <h4>{user.pseudo}</h4>
-                        <h3>FOLLOW HANDLER</h3>
+                        <div className="follow-handler">
+                        <FollowHandler idToFollow={user._id} type={"suggestion"}/>
+                        </div>
                       </li>
                     );
                   }
                 }
+                return null
               })}
             </ul>
           </div>

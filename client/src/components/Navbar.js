@@ -25,7 +25,7 @@ const Navbar = () => {
             <li></li>
             <li className="img-navbar">
               <NavLink exact to="/profil">
-                <img src={userData.picture} alt="Photo de profil de" />
+                <img src={userData.picture} alt="user-pic" />
               </NavLink>
             </li>
             <li className="welcome">

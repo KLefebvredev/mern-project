@@ -23,7 +23,7 @@ module.exports.createPost = async (req, res) => {
         req.file.detectedMimeType != "image/png" &&
         req.file.detectedMimeType != "image/jpeg"
       )
-        throw Error("Invalid file");
+        throw Error("invalid file");
 
       if (req.file.size > 500000) throw Error("maxSize");
     } catch (err) {
@@ -161,7 +161,7 @@ module.exports.commentPost = (req, res) => {
             commenterId: req.body.commenterId,
             commenterPseudo: req.body.commenterPseudo,
             text: req.body.text,
-            timestamps: new Date().getTime(),
+            timestamp: new Date().getTime(),
           },
         },
       },
