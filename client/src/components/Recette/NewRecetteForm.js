@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { isEmpty } from "../Utils";
+import { isEmpty, timestampParser } from "../Utils";
 
 const NewRecetteForm = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,40 +39,39 @@ const NewRecetteForm = () => {
   const handlePicture = () => {};
 
   const handleRecette = () => {};
-  
-  const cancelRecette = () => {
-    setTitre('');
-    setPersonne('');
-    setIngredient1('');
-    setIngredient2('');
-    setIngredient3('');
-    setIngredient4('');
-    setIngredient5('');
-    setIngredient6('');
-    setIngredient7('');
-    setIngredient8('');
-    setIngredient9('');
-    setQtIngredient1('');
-    setQtIngredient2('');
-    setQtIngredient3('');
-    setQtIngredient4('');
-    setQtIngredient5('');
-    setQtIngredient6('');
-    setQtIngredient7('');
-    setQtIngredient8('');
-    setQtIngredient9('');
-    setPreparation('');
-    setSaison('');
-    setConseil('');
-    setCalories('');
-    setProteines('');
-    setLipides('');
-    setGlucides('');
-    setTags('');
-    setPostPicture('');
-    setFile('');
-  };
 
+  const cancelRecette = () => {
+    setTitre("");
+    setPersonne("");
+    setIngredient1("");
+    setIngredient2("");
+    setIngredient3("");
+    setIngredient4("");
+    setIngredient5("");
+    setIngredient6("");
+    setIngredient7("");
+    setIngredient8("");
+    setIngredient9("");
+    setQtIngredient1("");
+    setQtIngredient2("");
+    setQtIngredient3("");
+    setQtIngredient4("");
+    setQtIngredient5("");
+    setQtIngredient6("");
+    setQtIngredient7("");
+    setQtIngredient8("");
+    setQtIngredient9("");
+    setPreparation("");
+    setSaison("");
+    setConseil("");
+    setCalories("");
+    setProteines("");
+    setLipides("");
+    setGlucides("");
+    setTags("");
+    setPostPicture("");
+    setFile("");
+  };
 
   useEffect(() => {
     if (!isEmpty(userData)) setIsLoading(false);
@@ -325,6 +324,53 @@ const NewRecetteForm = () => {
               onChange={(e) => setTags(e.target.value)}
               value={tags}
             />
+            {titre ||
+            postPicture ||
+            personne ||
+            ingredient1 ||
+            ingredient2 ||
+            ingredient3 ||
+            ingredient4 ||
+            ingredient5 ||
+            ingredient6 ||
+            ingredient7 ||
+            ingredient8 ||
+            ingredient9 ||
+            qtingredient1 ||
+            qtingredient2 ||
+            qtingredient3 ||
+            qtingredient4 ||
+            qtingredient5 ||
+            qtingredient6 ||
+            qtingredient7 ||
+            qtingredient8 ||
+            qtingredient9 ||
+            preparation ||
+            saison ||
+            calories ||
+            proteines ||
+            lipides ||
+            glucides ||
+            tags ||
+            conseil ? (
+              <li className="card-container">
+                <div className="card-left">
+                  <img src={userData.picture} alt="User picture" />
+                </div>
+                <div className="card-right">
+                  <div className="card-header">
+                    <div className="pseudo">
+                      <h3>{userData.pseudo}</h3>
+                    </div>
+                    <span>{timestampParser(Date.now())}</span>
+                  </div>
+                  <div className="content">
+                      <h4>{titre}</h4>
+                      <p>Pour {personne} personnes</p>
+                  </div>
+                </div>
+              </li>
+            ) : null}
             {}
             <div className="footer-form">
               <div className="icon">
@@ -340,10 +386,42 @@ const NewRecetteForm = () => {
                 </>
               </div>
               <div className="btn-send">
-                  { titre || postPicture || personne || ingredient1 || ingredient2 || ingredient3 || ingredient4 || ingredient5 || ingredient6 ||ingredient7 || ingredient8 || ingredient9 || qtingredient1 || qtingredient2 || qtingredient3 || qtingredient4 || qtingredient5 || qtingredient6 ||qtingredient7 || qtingredient8 || qtingredient9 || preparation || saison || calories || proteines || lipides || glucides || tags || conseil ? (
-                      <button className="cancel" onClick={cancelRecette}>Annuler</button>
-                  ) : null}
-                  <button className="send" onClick={handleRecette}>Envoyer</button>
+                {titre ||
+                postPicture ||
+                personne ||
+                ingredient1 ||
+                ingredient2 ||
+                ingredient3 ||
+                ingredient4 ||
+                ingredient5 ||
+                ingredient6 ||
+                ingredient7 ||
+                ingredient8 ||
+                ingredient9 ||
+                qtingredient1 ||
+                qtingredient2 ||
+                qtingredient3 ||
+                qtingredient4 ||
+                qtingredient5 ||
+                qtingredient6 ||
+                qtingredient7 ||
+                qtingredient8 ||
+                qtingredient9 ||
+                preparation ||
+                saison ||
+                calories ||
+                proteines ||
+                lipides ||
+                glucides ||
+                tags ||
+                conseil ? (
+                  <button className="cancel" onClick={cancelRecette}>
+                    Annuler
+                  </button>
+                ) : null}
+                <button className="send" onClick={handleRecette}>
+                  Envoyer
+                </button>
               </div>
             </div>
           </div>
