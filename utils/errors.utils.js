@@ -43,3 +43,33 @@ module.exports.uploadErrors = (err) => {
 
     return errors
 }
+
+module.exports.recetteErrors = (err) => {
+    let errors = {titre: '', personne:'', ingredient:'',saison: '',calories: '',proteines:'',lipides:'',glucides:'',};
+
+    if (err.message.includes('titre'))
+        errors.pseudo = "Un titre est nécessaire";
+
+    if (err.message.includes('personne'))
+        errors.email = "Un nombre de personnes est nécessaire";
+
+    if (err.message.includes('ingredient'))
+        errors.password = "La recette doit comporter 6 ingredients minimum";
+
+    if (err.message.includes('saison'))
+        errors.password = "Une saison est necéssaire";
+
+    if (err.message.includes('calories'))
+        errors.password = "Les calories sont nécessaire";
+
+    if (err.message.includes('proteines'))
+        errors.password = "Les proteines sont necéssaire";
+
+    if (err.message.includes('glucides'))
+        errors.password = "Les glucides sont necéssaire";
+
+    if (err.message.includes('lipides'))
+        errors.password = "Les lipides sont necéssaire";
+
+    return errors;
+};

@@ -1,5 +1,6 @@
 import { GET_POST_ERRORS } from "../actions/post.actions";
 import { GET_USER_ERRORS } from "../actions/user.actions";
+import { GET_RECETTE_ERRORS } from "../actions/recette.actions";
 
 const initialState = { userError: [] , postError: []};
 
@@ -14,7 +15,12 @@ export default function errorReducer(state = initialState, action) {
       return {
         userError: action.payload,
         postError: []
-      } 
+      }
+    case GET_RECETTE_ERRORS:
+      return {
+        recetteError: action.payload,
+        
+        } 
     default:
       return state;
   }

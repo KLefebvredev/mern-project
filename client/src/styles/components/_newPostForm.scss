@@ -3,7 +3,7 @@
   padding: 16px 40px;
   border-radius: 20px;
   position: relative;
-  background: $color-4;
+  background: $color-1;
 
   i {
     font-size: 1.5rem;
@@ -15,6 +15,7 @@
     position: absolute;
     right: 42px;
     text-align: right;
+    color: $white;
 
     @media screen and(max-width: 420px) {
       right: 10px;
@@ -129,6 +130,7 @@
           height: 24px;
           width: 24px;
           transform: translate(-18px, -1px);
+
         }
 
         button {
@@ -161,19 +163,24 @@
         color: red;
       }
       .btn-send {
+
         .cancel {
           border-radius: 20px;
           margin-right: 8px;
-          background: $white;
+          background: $color-4;
 
           &:hover {
-            color: $color-4;
-            background: $color-3;
+            color: $white;
+            background: $color-4;
+            letter-spacing: 2px;
           }
         }
         .send {
+          background: $color-4;
+
           &:hover {
             letter-spacing: 2px;
+            color: $white;
           }
         }
         button {

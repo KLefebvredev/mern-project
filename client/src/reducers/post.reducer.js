@@ -1,11 +1,11 @@
 import {
-  DELETE_COMMENT,
   DELETE_POST,
-  EDIT_COMMENT,
   GET_POSTS,
   LIKE_POST,
   UNLIKE_POST,
   UPDATE_POST,
+  EDIT_COMMENT,
+  DELETE_COMMENT,
 } from "../actions/post.actions";
 
 const initialState = {};

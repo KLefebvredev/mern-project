@@ -44,14 +44,7 @@ const Card = ({ post }) => {
                   })
                   .join("")
               }
-              alt="poster-pic"
-              //   {!isEmpty(usersData[0]) &&usersData
-              //       .map((user) => {
-              //         if (user._id === post.posterId) return user.pseudo;
-              //         else return null
-              //       })
-              //       .join("")}
-            />
+              alt="poster-pic"/>
           </div>
           <div className="card-right">
             <div className="card-header">
@@ -115,7 +108,6 @@ const Card = ({ post }) => {
                 <span>{post.comments.length}</span>
               </div>
               <LikeButton post={post} />
-              <img src="./img/icons/share.svg" alt="share" />
             </div>
             {showComments && <CardComments post={post} />}
           </div>
