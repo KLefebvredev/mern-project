@@ -239,7 +239,7 @@ const CardRecette = ({ recette }) => {
               <div className="icon">
                 <img
                   src="./img/icons/kcal.png"
-                  alt="Icon de calorie"
+                  alt="Icon de calories"
                   title="Calories"
                 />
                 <span>

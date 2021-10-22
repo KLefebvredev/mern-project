@@ -32,13 +32,6 @@ export const getRecette = () => {
     return (dispatch) => {
       return axios
         .post(`${process.env.REACT_APP_API_URL}api/recette/`, data)
-        .then((res) => {
-          if (res.data.errors) {
-            dispatch({ type: GET_RECETTE_ERRORS, payload: res.data.errors });
-          } else {
-            dispatch({ type: GET_RECETTE_ERRORS, payload: "" });
-          }
-        });
     };
   };
 

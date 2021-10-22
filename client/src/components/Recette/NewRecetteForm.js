@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addRecette, getRecette } from "../../actions/recette.actions";
 import { isEmpty, timestampParser } from "../Utils";
 
 const NewRecetteForm = () => {
@@ -35,10 +36,96 @@ const NewRecetteForm = () => {
   const [postPicture, setPostPicture] = useState(null);
   const [file, setFile] = useState();
   const userData = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+  const ingredients = [
+    ingredient1,
+    ingredient2 ||
+      ingredient3 ||
+      ingredient4 ||
+      ingredient5 ||
+      ingredient6 ||
+      ingredient7 ||
+      ingredient8 ||
+      ingredient9 ||
+      qtingredient1 ||
+      qtingredient2 ||
+      qtingredient3 ||
+      qtingredient4 ||
+      qtingredient5 ||
+      qtingredient6 ||
+      qtingredient7 ||
+      qtingredient8 ||
+      qtingredient9,
+  ];
 
-  const handlePicture = () => {};
+  const handlePicture = (e) => {
+    setPostPicture(URL.createObjectURL(e.target.files[0]));
+    setFile(e.target.files[0]);
+  };
 
-  const handleRecette = () => {};
+  const handleRecette = async () => {
+    if (
+      titre ||
+      postPicture ||
+      personne ||
+      ingredient1 ||
+      ingredient2 ||
+      ingredient3 ||
+      ingredient4 ||
+      ingredient5 ||
+      ingredient6 ||
+      qtingredient1 ||
+      qtingredient2 ||
+      qtingredient3 ||
+      qtingredient4 ||
+      qtingredient5 ||
+      qtingredient6 ||
+      preparation ||
+      saison ||
+      calories ||
+      proteines ||
+      lipides ||
+      glucides
+    ) {
+      const data = new FormData();
+      data.append("posterId", userData._id);
+      data.append("titre", titre);
+      data.append("personne", personne);
+      if (file) data.append("file", file);
+      data.append("ingredient1", ingredient1);
+      data.append("ingredient2", ingredient2);
+      data.append("ingredient3", ingredient3);
+      data.append("ingredient4", ingredient4);
+      data.append("ingredient5", ingredient5);
+      data.append("ingredient6", ingredient6);
+      data.append("ingredient7", ingredient7);
+      data.append("ingredient8", ingredient8);
+      data.append("ingredient9", ingredient9);
+      data.append("qtingredient1", qtingredient1);
+      data.append("qtingredient2", qtingredient2);
+      data.append("qtingredient3", qtingredient3);
+      data.append("qtingredient4", qtingredient4);
+      data.append("qtingredient5", qtingredient5);
+      data.append("qtingredient6", qtingredient6);
+      data.append("qtingredient7", qtingredient7);
+      data.append("qtingredient8", qtingredient8);
+      data.append("qtingredient9", qtingredient9);
+      data.append("preparation", preparation);
+      data.append("saison", saison);
+      data.append("conseil", conseil);
+      data.append("proteines", proteines);
+      data.append("lipides", lipides);
+      data.append("glucides", glucides);
+      data.append("calories", calories);
+      data.append("tags", tags);
+
+      await dispatch(addRecette(data));
+      dispatch(getRecette());
+      cancelRecette();
+    } else {
+      alert("Veuillez remplir le formulaire");
+    }
+  };
 
   const cancelRecette = () => {
     setTitre("");
@@ -97,9 +184,9 @@ const NewRecetteForm = () => {
               onChange={(e) => setTitre(e.target.value)}
               value={titre}
             />
-            <br />
-            <textarea
+            <input
               className="titre"
+              type="number"
               name="personne"
               id="personne"
               placeholder="Nombre de personnes"
@@ -365,8 +452,136 @@ const NewRecetteForm = () => {
                     <span>{timestampParser(Date.now())}</span>
                   </div>
                   <div className="content">
-                      <h4>{titre}</h4>
-                      <p>Pour {personne} personnes</p>
+                    <h4>{titre}</h4>
+                    {personne ? <p>Pour {personne} personnes</p> : null}
+                    {postPicture ? (
+                      <img src={postPicture} alt="Photo de la recette" />
+                    ) : null}
+                    {
+                      (ingredient1,
+                      ingredient2 ||
+                      ingredient3 ||
+                      ingredient4 ||
+                      ingredient5 ||
+                      ingredient6 ||
+                      ingredient7 ||
+                      ingredient8 ||
+                      ingredient9 ||
+                      qtingredient1 ||
+                      qtingredient2 ||
+                      qtingredient3 ||
+                      qtingredient4 ||
+                      qtingredient5 ||
+                      qtingredient6 ||
+                      qtingredient7 ||
+                      qtingredient8 ||
+                      qtingredient9 ? (
+                        <h4 className="underline">Ingrédients</h4>
+                      ) : null)
+                    }
+                    <li>
+                      <ul>
+                        <li className="ingredients-previ">
+                          {qtingredient1 || ingredient1 ? (
+                            <li>
+                              {qtingredient1} {ingredient1}
+                            </li>
+                          ) : null}
+                          {qtingredient2 || ingredient2 ? (
+                            <li>
+                              {qtingredient2} {ingredient2}
+                            </li>
+                          ) : null}
+                          {qtingredient3 || ingredient3 ? (
+                            <li>
+                              {qtingredient3} {ingredient3}
+                            </li>
+                          ) : null}
+                          {qtingredient4 || ingredient4 ? (
+                            <li>
+                              {qtingredient4} {ingredient4}
+                            </li>
+                          ) : null}
+                          {qtingredient5 || ingredient5 ? (
+                            <li>
+                              {qtingredient5} {ingredient5}
+                            </li>
+                          ) : null}
+                          {qtingredient6 || ingredient6 ? (
+                            <li>
+                              {qtingredient6} {ingredient6}
+                            </li>
+                          ) : null}
+                          {qtingredient7 || ingredient7 ? (
+                            <li>
+                              {qtingredient7} {ingredient7}
+                            </li>
+                          ) : null}
+                          {qtingredient8 || ingredient8 ? (
+                            <li>
+                              {qtingredient8} {ingredient8}
+                            </li>
+                          ) : null}
+                          {qtingredient9 || ingredient9 ? (
+                            <li>
+                              {qtingredient9} {ingredient9}
+                            </li>
+                          ) : null}
+                        </li>
+                      </ul>
+                      <br />
+                      <p>{preparation}</p>
+                      {(calories || proteines || lipides || glucides ? (
+                        <h4 className="underline">Valeurs nutritionnelles pour une personne</h4>
+                      ) : null)
+                    }
+                    <div className="card-footer-recette">
+                      <div className="icon">
+                      {calories ? (
+                        <>
+                        <img src="./img/icons/kcal.png" alt='Icon de calories' />
+                        <span>{calories} kcal</span>
+                        </>
+                      ) : null }
+                      </div>
+                      <div className="icon">
+                      {proteines ? (
+                        <>
+                        <img src="./img/icons/proteine.png" alt='Icon de proteines' />
+                        <span>{proteines}</span>
+                        </>
+                      ) : null }
+                      </div>
+                      <div className="icon">
+                      {glucides ? (
+                        <>
+                        <img src="./img/icons/glucide.png" alt='Icon de glucide' />
+                        <span>{glucides}</span>
+                        </>
+                      ) : null }
+                      </div>
+                      <div className="icon">
+                      {lipides ? (
+                        <>
+                        <img src="./img/icons/oil.png" alt='Icon de lipide' />
+                        <span>{lipides}</span>
+                        </>
+                      ) : null }
+                      </div>
+                    </div>
+                      {saison ? (
+                        <>
+                        <h4 className="underline">Saisonnalité</h4>
+                        <p>{saison}</p>
+                        </>
+                      ) : null }
+                      {conseil ? (
+                        <>
+                        <h4 className="underline">Conseils</h4>
+                        <p>{conseil}</p>
+                        </>
+                      ) : null }
+                    </li>
                   </div>
                 </div>
               </li>
